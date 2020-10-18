@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hwh-sH-bb0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hwh-sH-bb0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -149,10 +149,70 @@
                     <view key="view" contentMode="scaleToFill" id="5dE-BT-Tyt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="b5M-Co-iYg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Lf4-yK-Bdw" id="wna-UI-dN5"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pss-Fv-EG9">
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oj9-Gl-NeH">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultCell" id="wSp-zN-6gP" customClass="ResultCell" customModule="MyNetflix" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rwd-B9-AVg">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5tQ-Cd-ilw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5tQ-Cd-ilw" secondAttribute="trailing" id="KsZ-C2-gUF"/>
+                                                <constraint firstAttribute="bottom" secondItem="5tQ-Cd-ilw" secondAttribute="bottom" id="jvq-m3-qpt"/>
+                                                <constraint firstItem="5tQ-Cd-ilw" firstAttribute="top" secondItem="Rwd-B9-AVg" secondAttribute="top" id="mSo-4T-KqT"/>
+                                                <constraint firstItem="5tQ-Cd-ilw" firstAttribute="leading" secondItem="Rwd-B9-AVg" secondAttribute="leading" id="vUE-0j-nPJ"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="moviewThumnail" destination="5tQ-Cd-ilw" id="H5x-sA-cyx"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lf4-yK-Bdw" id="kZs-xy-bqa"/>
+                                    <outlet property="delegate" destination="Lf4-yK-Bdw" id="Taj-ok-Axd"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pss-Fv-EG9" firstAttribute="top" secondItem="b5M-Co-iYg" secondAttribute="bottom" id="BGr-GU-WiB"/>
+                            <constraint firstItem="b5M-Co-iYg" firstAttribute="top" secondItem="n9k-jk-E7Q" secondAttribute="top" id="Xer-BG-XL0"/>
+                            <constraint firstItem="b5M-Co-iYg" firstAttribute="leading" secondItem="n9k-jk-E7Q" secondAttribute="leading" id="auI-EM-gJr"/>
+                            <constraint firstItem="n9k-jk-E7Q" firstAttribute="trailing" secondItem="pss-Fv-EG9" secondAttribute="trailing" id="cKg-IM-fyk"/>
+                            <constraint firstItem="n9k-jk-E7Q" firstAttribute="bottom" secondItem="pss-Fv-EG9" secondAttribute="bottom" id="gXh-6B-hwG"/>
+                            <constraint firstItem="b5M-Co-iYg" firstAttribute="trailing" secondItem="n9k-jk-E7Q" secondAttribute="trailing" id="vj4-4P-5dA"/>
+                            <constraint firstItem="pss-Fv-EG9" firstAttribute="leading" secondItem="n9k-jk-E7Q" secondAttribute="leading" id="yeF-tb-2K0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="n9k-jk-E7Q"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="UWE-ky-SQF"/>
+                    <connections>
+                        <outlet property="resultCollectionView" destination="pss-Fv-EG9" id="hbr-NO-QBl"/>
+                        <outlet property="searchBar" destination="b5M-Co-iYg" id="S8x-uL-TNg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9vi-cu-R4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
