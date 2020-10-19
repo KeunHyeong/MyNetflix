@@ -2,8 +2,8 @@
 //  HomeViewController.swift
 //  MyNetflix
 //
-//  Created by joonwon lee on 2020/04/01.
-//  Copyright © 2020 com.joonwon. All rights reserved.
+//  Created by KeunHyeong on 2020/10/18.
+//  Copyright © 2020 com.KeunHyeong. All rights reserved.
 //
 
 import UIKit
@@ -41,18 +41,18 @@ class HomeViewController: UIViewController {
     
 
     @IBAction func playButtonTapped(_ sender: Any) {
-//        SearchAPI.search("interstella") { movies in
-//            guard let interstella = movies.first else { return }
-//            DispatchQueue.main.async {
-//                let url = URL(string: interstella.previewURL)!
-//                let item = AVPlayerItem(url: url)
-//                
-//                let sb = UIStoryboard(name: "Player", bundle: nil)
-//                let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
-//                vc.modalPresentationStyle = .fullScreen
-//                vc.player.replaceCurrentItem(with: item)
-//                self.present(vc, animated: false, completion: nil)
-//            }
-//        }
+        SearchAPI.search("Interstellar") { movies in
+            guard let interstella = movies.first else { return }
+            DispatchQueue.main.async {
+                let url = URL(string: interstella.previewURL)!
+                let item = AVPlayerItem(url: url)
+                
+                let sb = UIStoryboard(name: "Player", bundle: nil)
+                let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+                vc.modalPresentationStyle = .fullScreen
+                vc.player.replaceCurrentItem(with: item)
+                self.present(vc, animated: false, completion: nil)
+            }
+        }
     }
 }

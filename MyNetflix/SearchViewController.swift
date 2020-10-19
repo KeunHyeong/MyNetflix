@@ -2,13 +2,14 @@
 //  SearchViewController.swift
 //  MyNetflix
 //
-//  Created by joonwon lee on 2020/04/02.
-//  Copyright © 2020 com.joonwon. All rights reserved.
+//  Created by KeunHyeong on 2020/10/18.
+//  Copyright © 2020 com.KeunHyeong. All rights reserved.
 //
 
 import UIKit
 import Kingfisher
 import AVFoundation
+import Firebase
 
 class SearchViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
     var movies:[Movie] = []
+    let db = Database.database().reference().child("searchHistory")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,9 +95,22 @@ extension SearchViewController:UISearchBarDelegate{
             DispatchQueue.main.async {
                 self.movies = movies
                 self.resultCollectionView.reloadData()
+                
+                let timeStamp:Double = Date().timeIntervalSince1970.rounded()
+                self.db.childByAutoId().setValue(["term":searchTerm,"timestamp":timeStamp])
             }
         }
         
         print("----->\(searchTerm)")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty == true {
+            guard self.movies.isEmpty == false else{
+                return
+            }
+            self.movies.removeAll()
+            self.resultCollectionView.reloadData()
+        }
     }
 }

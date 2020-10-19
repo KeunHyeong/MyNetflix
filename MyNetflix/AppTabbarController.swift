@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  MyNetflix
 //
-//  Created by joonwon lee on 2020/04/01.
-//  Copyright © 2020 com.joonwon. All rights reserved.
+//  Created by KeunHyeong on 2020/10/18.
+//  Copyright © 2020 com.KeunHyeong. All rights reserved.
 //
 
 import UIKit

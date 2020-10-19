@@ -7,4 +7,7 @@ target 'MyNetflix' do
 
   # Pods for MyNetflix
 pod 'Kingfisher', '~> 5.0'
+pod 'Firebase/Analytics'
+pod 'Firebase/Database'
+
 end
